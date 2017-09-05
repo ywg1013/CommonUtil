@@ -1,6 +1,9 @@
 ﻿#include <QCoreApplication>
 #include "timeutil.h"
 #include "stringutil.h"
+#include <iterator>
+#include <iostream>
+#include <algorithm>
 
 int main(int argc, char *argv[])
 {
@@ -32,6 +35,15 @@ int main(int argc, char *argv[])
   std::cout << StringUtil::CompareEqual(3.12345678777,3.12345678776) << std::endl;
   std::cout << StringUtil::CompareEqual(3.12345678777,3.12345678777) << std::endl;
 
+  std::string str1 = "345#78#23#89";
+  std::string str2 = "jfkd&&jfkdkslf&&334&&hhh";
+  std::vector<std::string> str1vect,str2vect;
+  SplitByString(str2,"&&", str2vect);
+  SplitByChar(str1,'#', str1vect);
+
+  std::copy(str1vect.begin(), str1vect.end(), std::ostream_iterator<std::string> (std::cout, " "));
+  std::cout << std::endl;
+  std::copy(str2vect.begin(), str2vect.end(), std::ostream_iterator<std::string> (std::cout, " "));
 
   return a.exec();
 }

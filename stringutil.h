@@ -22,69 +22,36 @@ public:
     StringUtil();
     ~StringUtil();
 
-
-    /**
-     * @brief string类型变量转换为int类型变量
-     * @param[in] s string类型变量
-     * @return int型变量
-     *
-     */
     static int StrToInt(const std::string& s)
     {
         return std::stoi(s.c_str());
     }
 
-    /**
-     * @brief string类型变量转换为float类型变量
-     * @param[in] s string类型变量
-     * @return float型变量
-     *
-     */
+
     static float StrToFloat(const std::string& str)
     {
         return std::stof(str);
     }
 
-    /**
-     * @brief string类型变量转换为float类型变量
-     * @param[in] s string类型变量
-     * @return double型变量
-     *
-     */
+
     static double StrToDouble(const std::string& str)
     {
         return std::stod(str);
     }
 
 
-    /**
-     * @brief string类型变量转换为long long类型变量
-     * @param[in] s string类型变量
-     * @return long long型变量
-     *
-     */
     static long long StrToLL(const std::string& str)
     {     
          return std::stoll(str);
     }
 
-    /**
-     * @brief int类型变量转换为string类型变量
-     * @param[in] value int类型变量
-     * @return string型变量
-     *
-     */
+
     static std::string LongToStr(long value)
     {
          return std::to_string(value);
     }
 
-    /**
-     * @brief long long类型变量转换为string类型变量
-     * @param[in] value long long类型变量
-     * @return string型变量
-     *
-     */
+
     static std::string LLToString(long long value)
     {
         char buff[64];
@@ -93,23 +60,13 @@ public:
     }
 
 
-    /**
-     * @brief float类型变量转换为string类型变量
-     * @param[in] value float类型变量
-     * @return string型变量
-     *
-     */
+
     static std::string FloatToStr(double value)
     {
       return std::to_string(value);
     }
 
-    /**
-     * @brief float类型变量转换为string类型变量
-     * @param[in] value float类型变量
-     * @return string型变量
-     *
-     */
+
     static std::string FloatToStr(double value,int digits)
     {
         char buff[64];
@@ -119,11 +76,7 @@ public:
         return buff;
     }
 
-    /**
-     * @brief 比较两个float类型是否相等
-     * @param[in] value float类型变量
-     * @return 相等true 否则返回false
-     */
+
     static bool CompareEqual(float value1,float value2)
     {
         if(fabs(value1-value2) <  FLT_EPSILON)
@@ -208,20 +161,8 @@ public:
      */
     static std::string Replace_Str(std::string & s1, const std::string & s2, const std::string & s3);
 
-    /**
-     * @brief 去掉给定字符串前后的空格
-     * @param[in] str 操作串
-     *
-     * @return 去掉空格后的字符串
-     */
+
     static std::string Trim(std::string str);
-private:
-
-
-    /**
-     * @return Number of matching items.
-     */
-    static int ListFiles(const std::string& path, const std::string& filter, std::vector<std::string>& file);
 
 };
 
