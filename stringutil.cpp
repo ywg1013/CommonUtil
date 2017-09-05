@@ -65,7 +65,7 @@ std::string StringUtil::ConcatWithChar(std::map<int, std::string>& source, char 
     std::map<int, std::string>::iterator iter = source.begin();
     while (iter != source.end())
     {
-        result += StringUtil::IntToStr(iter->first);
+        result += StringUtil::LongToStr(iter->first);
         result += sep1;
         result += iter->second;
         result += sep2;

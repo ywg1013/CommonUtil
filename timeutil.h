@@ -18,15 +18,13 @@ class  TimeUtil
 public:
     TimeUtil();
     void start();
-    void end();
+    void reStart();
 
-    long long getUseTime();
-
-    /**
-     * 获取当前时间,格式为"YYYY-MM-DD HH:MM:SS.MMM"
-     */
+    //获取时间间隔.单位(ms)
+    double getElapsedTime();
+    // 获取当前时间,格式为"YYYY-MM-DD HH:MM:SS.MMM"
     static std::string getCurrentDate();
-
+    //获取系统时间毫秒，距离1970年1月1日0点0分0秒的毫秒数
     static long long getSystemTime();
 
 private:

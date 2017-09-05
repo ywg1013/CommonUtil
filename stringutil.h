@@ -3,8 +3,6 @@
 #define STRINGUTIL_H
 
 
-
-#include <cstdlib>
 #include <cstdio>
 #include <vector>
 #include <string>
@@ -12,15 +10,10 @@
 #include <map>
 #include <set>
 #include <string.h>
-#include <stdarg.h>
 #include <cfloat>
 #include <cmath>
 
 
-static const int CONST_FORMAT_BUFFER_SIZE = 4096;
-
-static const float F_EPSILON = static_cast<float>(1e-6);
-static const double D_EPSILON = 1e-6;
 
 class  StringUtil
 {
@@ -38,21 +31,31 @@ public:
      */
     static int StrToInt(const std::string& s)
     {
-        return std::atoi(s.c_str());
+        return std::stoi(s.c_str());
     }
 
     /**
-     * @brief int类型变量转换为string类型变量
-     * @param[in] value int类型变量
-     * @return string型变量
+     * @brief string类型变量转换为float类型变量
+     * @param[in] s string类型变量
+     * @return float型变量
      *
      */
-    static std::string IntToStr(long long value)
+    static float StrToFloat(const std::string& str)
     {
-        char buff[64];
-        std::sprintf(buff, "%lld", value);
-        return std::string(buff);
+        return std::stof(str);
     }
+
+    /**
+     * @brief string类型变量转换为float类型变量
+     * @param[in] s string类型变量
+     * @return double型变量
+     *
+     */
+    static double StrToDouble(const std::string& str)
+    {
+        return std::stod(str);
+    }
+
 
     /**
      * @brief string类型变量转换为long long类型变量
@@ -61,10 +64,19 @@ public:
      *
      */
     static long long StrToLL(const std::string& str)
+    {     
+         return std::stoll(str);
+    }
+
+    /**
+     * @brief int类型变量转换为string类型变量
+     * @param[in] value int类型变量
+     * @return string型变量
+     *
+     */
+    static std::string LongToStr(long value)
     {
-         long long ret;
-         sscanf(str.c_str(), "%lld", &ret );
-         return ret;
+         return std::to_string(value);
     }
 
     /**
@@ -80,27 +92,6 @@ public:
         return std::string(buff);
     }
 
-    /**
-     * @brief string类型变量转换为float类型变量
-     * @param[in] s string类型变量
-     * @return float型变量
-     *
-     */
-    static float StrToFloat(const std::string& s)
-    {
-        return static_cast<float>(std::atof(s.c_str()));
-    }
-
-    /**
-     * @brief string类型变量转换为float类型变量
-     * @param[in] s string类型变量
-     * @return double型变量
-     *
-     */
-    static double StrToDouble(const std::string& s)
-    {
-        return std::atof(s.c_str());
-    }
 
     /**
      * @brief float类型变量转换为string类型变量
@@ -110,22 +101,7 @@ public:
      */
     static std::string FloatToStr(double value)
     {
-        char buff[128];
-        std::sprintf(buff, "%f", value);
-        std::string ret = std::string(buff);
-        size_t size = ret.size();
-        std::string s = ret;
-        while(ret[size-1] == '0')
-        {
-            s.erase(size-1,1);
-            size--;
-        }
-        if (ret[size-1] == '.')
-        {
-            s.erase(size-1,1);
-            size--;
-        }
-        return s;
+      return std::to_string(value);
     }
 
     /**
@@ -136,9 +112,9 @@ public:
      */
     static std::string FloatToStr(double value,int digits)
     {
-        char buff[128];
+        char buff[64];
         std::stringstream ss;
-        ss << "%0." << digits << "lf";
+        ss << "%0." << digits << "f";
         std::sprintf(buff, ss.str().c_str(), value);
         return buff;
     }
@@ -150,8 +126,8 @@ public:
      */
     static bool CompareEqual(float value1,float value2)
     {
-    	if(fabs(value1-value2) < F_EPSILON)
-    		return true;
+        if(fabs(value1-value2) <  FLT_EPSILON)
+                return true;
     	else
     		return false;
     }
@@ -163,7 +139,7 @@ public:
      */
     static bool CompareEqual(double value1,double value2)
     {
-    	if(fabs(value1-value2) < D_EPSILON)
+        if(fabs(value1-value2) < DBL_EPSILON)
     		return true;
     	else
     		return false;

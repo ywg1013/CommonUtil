@@ -11,39 +11,35 @@ void TimeUtil::start()
    ftime(&m_Start);
 }
 
-void TimeUtil::end()
+void TimeUtil::reStart()
 {
-   ftime(&m_End);
-
+   start();
 }
 
-long long TimeUtil::getUseTime()
+double TimeUtil::getElapsedTime()
 {
-   return difftime(m_End.time,m_Start.time);
+   ftime(&m_End);
+   return difftime(m_End.time,m_Start.time)*1000+m_End.millitm-m_Start.millitm;
 }
 
 std::string TimeUtil::getCurrentDate()
 {
- // int milli = int(getSystemTime()) / 1000;
-
-  time_t rawtime;
+  timeb tb;
+  ftime(&tb);
   struct tm * timeinfo;
-  char buffer [80];
+  timeinfo = localtime(&tb.time);
 
-  time(&rawtime);
-  timeinfo = localtime(&rawtime);
+  char secondBuffer [30];
+  strftime(secondBuffer, 80, "%Y-%m-%d %H:%M:%S", timeinfo);
+  char millitmBuffer [34];
+  sprintf(millitmBuffer,"%s.%03d",secondBuffer,tb.millitm);
+  return std::string(millitmBuffer);
 
-  strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", timeinfo);
-  return std::string(buffer);
-//  char currentTime[84] = "";
-//  sprintf(currentTime, "%s:%d", buffer, milli);
-//  return std::string(currentTime);
 }
 
 long long TimeUtil::getSystemTime()
 {
    timeb tb;
    ftime(&tb);
-   printf(".%03d\n",tb.millitm);
-   return 1111;
+   return tb.time*1000+tb.millitm;
 }
