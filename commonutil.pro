@@ -3,7 +3,7 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = commonutil
+TARGET = CommonUtil
 CONFIG += console
 CONFIG -= app_bundle
 

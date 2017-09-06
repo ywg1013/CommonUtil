@@ -1,5 +1,4 @@
-﻿#include <QCoreApplication>
-#include "timeutil.h"
+﻿#include "timeutil.h"
 #include "stringutil.h"
 #include <iterator>
 #include <iostream>
@@ -7,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-  QCoreApplication a(argc, argv);
+
   TimeUtil time;
   time.start();
   std::string dateStr = TimeUtil::getCurrentDate();
@@ -45,5 +44,4 @@ int main(int argc, char *argv[])
   std::cout << std::endl;
   std::copy(str2vect.begin(), str2vect.end(), std::ostream_iterator<std::string> (std::cout, " "));
 
-  return a.exec();
 }
