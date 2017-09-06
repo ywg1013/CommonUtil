@@ -12,10 +12,15 @@ int main(int argc, char *argv[])
   std::string dateStr = TimeUtil::getCurrentDate();
   std::cout<< dateStr << std::endl;
 
-  long long aa = TimeUtil::getSystemTime();
-  std::cout << aa << std::endl;
-
+  time.reStart();
+  std::cout << TimeUtil::getSystemTimeMilli() << std::endl;
   std::cout<< time.getElapsedTime() << std::endl;
+
+  std::cout<< TimeUtil::getSystemTimeMilli() << "  milli second"<<  std::endl;
+
+  std::cout<< TimeUtil::getSystemTimeMicro()<< " micro second"<<  std::endl;
+
+  std::cout<< TimeUtil::getSystemTimeNano() << "  nano second" <<std::endl;
 
   //  /////////////////////////////////////////////////////////////////
 
