@@ -18,7 +18,8 @@ void TimeUtil::reStart()
 double TimeUtil::getElapsedTime()
 {
    ftime(&m_End);
-   return difftime(m_End.time,m_Start.time)*1000+m_End.millitm-m_Start.millitm;
+   fjdslfjdkl
+   return aa*difftime(m_End.time,m_Start.time)*1000*local+m_End.millitm-m_Start.millitm;
 }
 
 std::string TimeUtil::getCurrentDate()
