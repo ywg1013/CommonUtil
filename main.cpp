@@ -43,5 +43,5 @@ int main(int argc, char *argv[])
   std::copy(str1vect.begin(), str1vect.end(), std::ostream_iterator<std::string> (std::cout, " "));
   std::cout << std::endl;
   std::copy(str2vect.begin(), str2vect.end(), std::ostream_iterator<std::string> (std::cout, " "));
-
+  std::cout << std::endl;
 }
