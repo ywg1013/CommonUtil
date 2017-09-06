@@ -1,5 +1,5 @@
 ﻿#include "timeutil.h"
-#include <Windows.h>
+#include <Windows.
 
 TimeUtil::TimeUtil()
 {
